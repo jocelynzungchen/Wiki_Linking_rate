@@ -17,11 +17,11 @@
 
 ### Steps
 ---
-1. Dump Wikipedia 原始資料
-[https://dumps.wikimedia.org/zhwiki/latest/](https://dumps.wikimedia.org/zhwiki/latest/)
+1. Dump Wikipedia 原始資料\
+[https://dumps.wikimedia.org/zhwiki/latest/](https://dumps.wikimedia.org/zhwiki/latest/)\
 下載 `zhwiki-latest-pages-articles-multistream.xml.bz2`
 
-2. Parse 原始資料成 json 檔
+2. Parse 原始資料成 json 檔\
 [https://github.com/attardi/wikiextractor](https://github.com/attardi/wikiextractor)\
 處理完檔案位置：`jocelyn/wiki_page_data/OUTPUT`
 
@@ -39,11 +39,12 @@
     }
     ```
 
-3. Run `wiki_parse_parallel-zh.py` 抽取出內文中的連結
+3. Run `wiki_parse_parallel-zh.py` 抽取出內文中的連結\
 處理完檔案位置：`jocelyn/wiki_page_data/linking_data`
     ```bash
     python wiki_parse_parallel-zh.py -i [input_path(output_dir_from_step_2)] -o [output_path]
     ```
+    
     ```bash
     格式：
     {"id": "13",  
@@ -57,10 +58,10 @@
          "links": ...
         }, ...]
     }
-    
+
     line:  包含 hyperlink 的句子
     links: 句中的 hyperlink，[start_idx, end_idx, connect_to_page]
-    	     例如 line[16:34] = 數量 會連到維基頁面「量_(物理)」
+             例如 line[16:34] = 數量 會連到維基頁面「量_(物理)」
     ```
     
 4. Run `mention2entity.py` 得到 mention_entities-zh.json 以及 mention_count-zh.json 與 mention_count_v2-zh.json

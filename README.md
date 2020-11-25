@@ -30,38 +30,38 @@
 
     python -m wikiextractor.WikiExtractor --process 20 -o OUTPUT --json -l [path_of_your_zhwiki-latest-pages-articles-multistream.xml.bz2_file]
     ```
-```json
-格式：
-{"id": "13",  
- "url": "[https://zh.wikipedia.org/wiki?curid=13](https://zh.wikipedia.org/wiki?curid=13)",  
- "title": "数学", 
- "text": "数学\n\n数学是利用符号语言研究<a href=\"%E6%95%B8%E9%87%8F\">數量</a>、<a href=\"%E6%95%B0%E5%AD%A6%E7%BB%93%E6%9E%84\">结构</a>、<a href=\"%E5%8F%98%E5%8C%96\">变化</a>以及<a href=\"%E7%A9%BA%E9%97%B4%20%28%E6%95%B0%E5%AD%A6%29\">空间</a>等概念的一門<a href=\"%E5%AD%A6%E7%A7%91\">学科</a>，从某种角度看屬於<a href=\"%E5%BD%A2%E5%BC%8F%E7%A7%91%E5%AD%B8\">形式科學</a>的一種。"
-}
-```
+    ```bash
+    格式：
+    {"id": "13",  
+     "url": "[https://zh.wikipedia.org/wiki?curid=13](https://zh.wikipedia.org/wiki?curid=13)",  
+     "title": "数学", 
+     "text": "数学\n\n数学是利用符号语言研究<a href=\"%E6%95%B8%E9%87%8F\">數量</a>、<a href=\"%E6%95%B0%E5%AD%A6%E7%BB%93%E6%9E%84\">结构</a>、<a   href=\"%E5%8F%98%E5%8C%96\">变化</a>以及<a href=\"%E7%A9%BA%E9%97%B4%20%28%E6%95%B0%E5%AD%A6%29\">空间</a>等概念的一門<a href=\"%E5%AD%A6%E7%A7%91\">学科</a>，从某种角度看 屬於<a href=\"%E5%BD%A2%E5%BC%8F%E7%A7%91%E5%AD%B8\">形式科學</a>的一種。"
+    }
+    ```
 
 3. Run `wiki_parse_parallel-zh.py` 抽取出內文中的連結
 處理完檔案位置：`jocelyn/wiki_page_data/linking_data`
     ```bash
     python wiki_parse_parallel-zh.py -i [input_path(output_dir_from_step_2)] -o [output_path]
     ```
-```json
-格式：
-{"id": "13",  
- "url": "[https://zh.wikipedia.org/wiki?curid=13](https://zh.wikipedia.org/wiki?curid=13)",  
- "title": "数学", 
- "text": [
-    {"line": "数学是利用符号语言研究數量、结构、变化以及空间等概念的一門学科，从某种角度看屬於形式科學的一種。", 
-     "links": [[11, 13, "量_(物理)"], [14, 16, "数学结构"]]
-    },
-    {"line": ...,
-     "links": ...
-    }, ...]
-}
-
-line:  包含 hyperlink 的句子
-links: 句中的 hyperlink，[start_idx, end_idx, connect_to_page]
-	     例如 line[16:34] = 數量 會連到維基頁面「量_(物理)」
-```
+    ```bash
+    格式：
+    {"id": "13",  
+     "url": "[https://zh.wikipedia.org/wiki?curid=13](https://zh.wikipedia.org/wiki?curid=13)",  
+     "title": "数学", 
+     "text": [
+        {"line": "数学是利用符号语言研究數量、结构、变化以及空间等概念的一門学科，从某种角度看屬於形式科學的一種。", 
+         "links": [[11, 13, "量_(物理)"], [14, 16, "数学结构"]]
+        },
+        {"line": ...,
+         "links": ...
+        }, ...]
+    }
+    
+    line:  包含 hyperlink 的句子
+    links: 句中的 hyperlink，[start_idx, end_idx, connect_to_page]
+    	     例如 line[16:34] = 數量 會連到維基頁面「量_(物理)」
+    ```
     
 4. Run `mention2entity.py` 得到 mention_entities-zh.json 以及 mention_count-zh.json 與 mention_count_v2-zh.json
 ```json

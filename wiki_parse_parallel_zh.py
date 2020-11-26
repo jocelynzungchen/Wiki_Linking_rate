@@ -17,7 +17,7 @@ import urllib.parse
 from bson import json_util
 from math import sqrt, modf
 import logging
-import argparse # *****
+import argparse
 
 # from __future__ import print_function, unicode_literals
 from pathlib import Path
@@ -27,7 +27,7 @@ import thinc.extra.datasets
 import plac
 import spacy
 from spacy.util import minibatch
-from opencc import OpenCC # *****
+# from opencc import OpenCC
 import glob
 
 
@@ -36,7 +36,7 @@ import glob
 
 # spacy.prefer_gpu()
 nlp = spacy.load("zh_core_web_sm", disable=["ner"])
-cc = OpenCC('s2t') # *****
+# cc = OpenCC('s2t')
 
 
 def link_extractor(text):
@@ -83,7 +83,7 @@ def sentence_extractor(text):
          ...
          ]
     """
-    # text = cc.convert(text)  # *****
+    # text = cc.convert(text)
     for line in text.split("\n"):
         link_data = link_extractor(line)
         if not link_data['links']:
@@ -122,7 +122,7 @@ def generate_path(root_path):
 def split_path(full_path):
     """ Parse path and return in format [directory, file].
     """
-    parsed_list = full_path.split('/')[-2:] # *****
+    parsed_list = full_path.split('/')[-2:] # directtory, file_name
     
     return parsed_list
 
@@ -167,7 +167,7 @@ def main(output_dir, model="zh_core_web_sm", n_jobs=20, batch_size=1000, limit=1
     executor(tasks)
 
 
-if __name__ == "__main__":  # *****
+if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
         description=__doc__

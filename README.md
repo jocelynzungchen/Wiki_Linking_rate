@@ -1,7 +1,7 @@
 # Wiki_Linking_rate
 
 ### Goal
-***
+-
 計算維基百科中的片語被超連結的比例。\
 例如：（摘自中文維基百科中「美國總統」內文）
 > *...美國現任（第45任）總統為<a href="https://zh.wikipedia.org/wiki/%E5%85%B1%E5%92%8C%E9%BB%A8_(%E7%BE%8E%E5%9C%8B)">共和黨</a>籍的<a href="https://zh.wikipedia.org/wiki/%E5%94%90%E7%B4%8D%C2%B7%E5%B7%9D%E6%99%AE">唐納·川普</a>，於2017年就任。...*
